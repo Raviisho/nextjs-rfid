@@ -12,11 +12,20 @@ export default function ClientForm({ params }) {
   const [phone, setPhone] = useState("");
   const [tagsIds, setTagsIds] = useState([]);
 
+
   useEffect(() => {
-    if (params.id) {
-      fetch(`http://localhost:3000/api/clients/${params.id}`)
-        .then((res) => res.json())
-        .then((data) => {
+    const fetchData = async () => {
+      try {
+        if (params.id) {
+          const response = await fetch(`http://localhost:3000/api/clients/${params.id}`);
+            
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+    
+          const data = await response.json();
+            
+          // Update state variables based on the fetched data
           setName(data.cliente.name);
           setLast_Name(data.cliente.last_name);
           setEmail(data.cliente.email);
@@ -25,9 +34,15 @@ export default function ClientForm({ params }) {
           setPhone(data.cliente.phone);
           const tagsIds = data.tarj_nfc.map((target) => target.id);
           setTagsIds(tagsIds);
-        });
-    }
-  }, []);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        // Handle the error as needed, e.g., show an error message to the user
+      }
+    };
+    
+    fetchData();
+  }, [params.id]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
