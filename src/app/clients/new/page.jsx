@@ -31,23 +31,15 @@ export default function ClientForm({ params }) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    // Create an object to hold the data
     const data = {
-      name,
-      last_name,
-      email,
-      password,
-      address,
-      phone,
+      name, last_name, email, password, address, phone,
       tarj_nfc: {
         connect: Array.isArray(tagsIds) ? tagsIds.map((tagId) => ({ id: tagId })) : [],
       },
     };
-    
 
     const jsonData = JSON.stringify(data);
-
+    
     if (params.id) {
       const res = await fetch(`/api/clients/${params.id}`, {
         method: "PUT",
@@ -63,8 +55,8 @@ export default function ClientForm({ params }) {
       });
       const responseData = await res.json();
     }
-    router.refresh();
     router.push("/clients");
+    router.refresh();
   };
 
   return (
@@ -72,12 +64,8 @@ export default function ClientForm({ params }) {
       <form className="p-5" onSubmit={onSubmit}>
         <div className="relative z-0 w-full mb-6 group">
           <input
-            type="email"
-            name="email"
-            id="email"
+            type="email" name="email" id="email" placeholder=" " required
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            required
             onChange={(e) => setEmail(e.target.value)}
             value={email}
           />
@@ -90,12 +78,8 @@ export default function ClientForm({ params }) {
         </div>
         <div className="relative z-0 w-full mb-6 group">
           <input
-            type="password"
-            name="password"
-            id="password"
+            type="password" name="password" id="password" placeholder=" " required
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            required
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
@@ -109,12 +93,8 @@ export default function ClientForm({ params }) {
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="relative z-0 w-full mb-6 group">
             <input
-              type="text"
-              name="first_name"
-              id="first_name"
+              type="text" name="first_name" id="first_name" placeholder=" " required
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              required
               onChange={(e) => setName(e.target.value)}
               value={name}
             />
@@ -127,12 +107,8 @@ export default function ClientForm({ params }) {
           </div>
           <div className="relative z-0 w-full mb-6 group">
             <input
-              type="text"
-              name="last_name"
-              id="last_name"
+              type="text" name="last_name" id="last_name" placeholder=" " required
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              required
               onChange={(e) => setLast_Name(e.target.value)}
               value={last_name}
             />
@@ -147,12 +123,8 @@ export default function ClientForm({ params }) {
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="relative z-0 w-full mb-6 group">
             <input
-              type="text"
-              name="phone"
-              id="phone"
+              type="text" name="phone" id="phone" placeholder=" " required
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              required
               onChange={(e) => setPhone(e.target.value)}
               value={phone}
             />
@@ -165,12 +137,8 @@ export default function ClientForm({ params }) {
           </div>
           <div className="relative z-0 w-full mb-6 group">
             <input
-              type="text"
-              name="address"
-              id="address"
+              type="text" name="address" id="address" placeholder=" " required
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              required
               onChange={(e) => setAddress(e.target.value)}
               value={address}
             />
@@ -184,12 +152,8 @@ export default function ClientForm({ params }) {
         </div>
         <div className="relative z-0 w-full mb-6 group">
           <input
-            type="text"
-            name="id"
-            id="id"
+            type="text" name="id" id="id" placeholder=" " required
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            required
             onChange={(e) => setTagsIds(e.target.value)}
             value={tagsIds}
           />
