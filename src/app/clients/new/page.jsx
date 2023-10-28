@@ -41,7 +41,7 @@ export default function ClientForm({ params }) {
       address,
       phone,
       tarj_nfc: {
-        connect: tagsIds.map((tagId) => ({ id: tagId })),
+        connect: Array.isArray(tagsIds) ? tagsIds.map((tagId) => ({ id: tagId })) : [],
       },
     };
     
