@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 
-
 export default function SearchBar() {
   const [menuVisible, setMenuVisible] = useState(false);
   const pathname = usePathname();
@@ -71,7 +70,7 @@ export default function SearchBar() {
             </div>
           </div>
         </div>
-        <label htmlFor="table-search" className="sr-only">
+        <label htmlFor="table-search-users" className="sr-only">
           Search
         </label>
         <div className="relative">
@@ -96,7 +95,7 @@ export default function SearchBar() {
             type="text"
             id="table-search-users"
             className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Search htmlFor users"
+            placeholder="Search For users"
           />
         </div>
       </div>
