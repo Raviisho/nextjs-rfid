@@ -1,2 +1,2 @@
-import ClientForm from "@/app/clients/new/page"
-export default ClientForm
+import ClientForm from "@/app/clients/new/page";
+export default ClientForm;
