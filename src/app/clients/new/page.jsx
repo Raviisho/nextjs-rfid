@@ -39,6 +39,7 @@ export default function ClientForm({ params }) {
     const jsonData = JSON.stringify(data);
 
     if (params.id) {
+      console.log(params.id)
       const res = await fetch(`/api/clients/${params.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
