@@ -69,8 +69,10 @@ export default function ClientForm({ params }) {
       });
       const responseData = await res.json();
     }
+    console.log("ANTES");
     router.refresh();
     router.push("/clients");
+    console.log("DESPUES");
   };
 
   return (
