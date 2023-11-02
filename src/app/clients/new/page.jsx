@@ -12,7 +12,6 @@ export default function ClientForm({ params }) {
   const [phone, setPhone] = useState("");
   const [tagsIds, setTagsIds] = useState([]);
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -54,25 +53,21 @@ export default function ClientForm({ params }) {
     const jsonData = JSON.stringify(data);
 
     if (params.id) {
-      console.log(params.id)
       const res = await fetch(`/api/clients/${params.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: jsonData,
       });
-      const responseData = await res.json();
+      const updateCliente = await res.json();
     } else {
       const res = await fetch("/api/clients", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: jsonData,
       });
-      const responseData = await res.json();
+      const updateCliente = await res.json();
     }
-    console.log("ANTES");
-    router.refresh();
     router.push("/clients");
-    console.log("DESPUES");
   };
 
   return (
