@@ -8,7 +8,7 @@ export default function ClientesPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch("http://190.225.121.163:3000/api/clients");
+      const result = await fetch("http://localhost:3000/api/clients");
       const jsonResult = await result.json();
       setClients(jsonResult);
     };
