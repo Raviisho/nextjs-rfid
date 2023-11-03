@@ -1,19 +1,10 @@
-"use client";
-import { useEffect, useState, Suspense } from "react";
+import { Suspense } from "react";
+import getClients from "./libs/getClients";
 import SearchBar from "./components/searchbar";
 import Table from "./components/Table/table";
 
-export default function ClientesPage() {
-  const [clients, setClients] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetch("http://localhost/api/clients");
-      const jsonResult = await result.json();
-      setClients(jsonResult);
-    };
-    fetchData();
-  }, []);
+export default async function ClientesPage() {
+  const clients = await getClients();
 
   return (
     <>
