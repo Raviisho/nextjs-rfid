@@ -1,11 +1,8 @@
 import { Suspense } from "react";
-import getClients from "./libs/getClients";
 import SearchBar from "./components/searchbar";
 import Table from "./components/Table/table";
 
-export default async function ClientesPage() {
-  const clients = await getClients();
-
+export default function ClientesPage({ clients }) {
   return (
     <>
       <div className="m-5 overflow-x-auto shadow-md sm:rounded-lg">
@@ -16,4 +13,23 @@ export default async function ClientesPage() {
       </div>
     </>
   );
+}
+
+
+export async function getServerSideProps() {
+  const response = await fetch("http://127.0.0.1:3000/api/clients");
+
+  if (!response.ok) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const clients = await response.json();
+
+  return {
+    props: {
+      clients,
+    },
+  };
 }
