@@ -10,6 +10,7 @@ export default function pruebaSubmit() {
         console.error(`Error: ${error}`);
         return;
       }
-      console.log(`Resultado: ${stdout}`);
+      const res = stdout;
+      return res;
     });
 }

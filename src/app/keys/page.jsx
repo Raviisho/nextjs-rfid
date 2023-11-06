@@ -1,6 +1,6 @@
 import pruebaSubmit from "@/app/keys/components/execpy.jsx"
 export default function KeysPage() {
-  pruebaSubmit()
+  console.log(pruebaSubmit())
   return (
     <>
       <div>Keys Works</div>
