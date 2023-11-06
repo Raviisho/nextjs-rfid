@@ -1,10 +1,10 @@
 "use client";
+import { exec } from 'child_process';
 export default function KeysPage() {
   function pruebaSubmit() {
-    const { exec } = require("child_process");
 
     // Comando para ejecutar un script de Python
-    const comando = "python3 prueba.py";
+    const comando = "python3 src/assets/python/prueba.py";
 
     exec(comando, (error, stdout, stderr) => {
       if (error) {
