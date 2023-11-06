@@ -1,6 +1,6 @@
 import SearchBar from "../../../components/searchbar";
 import Table from "../../../components/Table/table";
-import getClients from "../../../libs/getClients";
+import { getServerSideProps } from "./getServerSideProps"; // Importa la función
 
 function ClientesPage({ clients }) {
   return (
@@ -13,12 +13,5 @@ function ClientesPage({ clients }) {
   );
 }
 
-export async function getServerSideProps() {
-  const clients = await getClients();
-
-  return {
-    props: { clients },
-  };
-}
-
+export { getServerSideProps }; // Exporta la función
 export default ClientesPage;
