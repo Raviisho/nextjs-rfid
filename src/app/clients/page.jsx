@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
-import SearchBar from "./components/SearchBar";
-import Table from "./components/Table/Table";
+import SearchBar from "./components/searchbar";
+import Table from "./components/Table/table";
 
 const useClientData = () => {
   const [clients, setClients] = useState([]);
