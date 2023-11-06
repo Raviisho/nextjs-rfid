@@ -8,12 +8,22 @@ export default function ClientesPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch("http://localhost:3000/api/clients");
-      const jsonResult = await result.json();
-      setClients(jsonResult);
+      try {
+        const result = await fetch("http://localhost:3000/api/clients");
+        if (!result.ok) {
+          throw new Error('Failed to fetch');
+        }
+        const jsonResult = await result.json();
+        setClients(jsonResult);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        // Handle the error, e.g., set an error state, display a message, etc.
+      }
     };
+  
     fetchData();
   }, []);
+  
 
   return (
     <>
