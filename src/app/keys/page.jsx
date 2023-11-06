@@ -1,24 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import pruebaSubmit from "@/app/keys/components/execpy.jsx";
+import React from 'react';
+import dynamic from 'next/dynamic'; // Import dynamic for dynamic imports
+const DynamicKeysComponent = dynamic(() => import('@/app/keys/components/KeysComponent'), {
+  ssr: false, // Set ssr to false for client-side rendering
+});
 
 export default function KeysPage() {
-  const [output, setOutput] = useState(null);
-  
-  useEffect(() => {
-    // Trigger the Python script execution on component mount
-    pruebaSubmit((result, error) => {
-      if (error) {
-        console.error(error);
-      } else {
-        setOutput(result);
-      }
-    });
-  }, []);
-
   return (
     <>
       <div>Keys Works</div>
-      <p>{output}</p>
+      <DynamicKeysComponent />
     </>
   );
 }
