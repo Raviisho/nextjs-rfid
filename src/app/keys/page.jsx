@@ -3,7 +3,7 @@ export default function KeysPage() {
   return (
     <>
       <div>Keys Works</div>
-      <p>{pruebaSubmit}</p>
+      <p>{pruebaSubmit()}</p>
     </>
   );
 }
