@@ -1,25 +1,24 @@
-"use client"
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import pruebaSubmit from "@/app/keys/components/execpy.jsx";
 
 export default function KeysPage() {
-    const [respuesta, setRespuesta] = useState(null);
+  const [output, setOutput] = useState(null);
+  
+  useEffect(() => {
+    // Trigger the Python script execution on component mount
+    pruebaSubmit((result, error) => {
+      if (error) {
+        console.error(error);
+      } else {
+        setOutput(result);
+      }
+    });
+  }, []);
 
-    useEffect(() => {
-        pruebaSubmit()
-            .then(result => {
-                setRespuesta(result);
-            })
-            .catch(error => {
-                // Handle error
-                console.error("Error:", error);
-            });
-    }, []);
-
-    return (
-        <>
-            <div>Keys Works</div>
-            <p>{respuesta}</p>
-        </>
-    );
+  return (
+    <>
+      <div>Keys Works</div>
+      <p>{output}</p>
+    </>
+  );
 }
