@@ -11,6 +11,6 @@ export default function pruebaSubmit() {
         return;
       }
       const res = stdout;
-      console.log(res);
+      return res;
     });
 }
