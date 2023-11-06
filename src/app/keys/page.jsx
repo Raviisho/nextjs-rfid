@@ -1,3 +1,4 @@
+"use client"
 import pruebaSubmit from "@/app/keys/components/execpy.jsx"
 export default function KeysPage() {
   pruebaSubmit()
