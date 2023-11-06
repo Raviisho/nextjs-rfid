@@ -16,7 +16,7 @@ export default function ClientForm({ params }) {
     const fetchData = async () => {
       try {
         if (params.id) {
-          const response = await fetch(`https://localhost:3000/api/clients/${params.id}`);
+          const response = await fetch(`http://190.225.121.163/api/clients/${params.id}`);
             
           if (!response.ok) {
             throw new Error('Network response was not ok');
