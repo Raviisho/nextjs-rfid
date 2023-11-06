@@ -1,4 +1,5 @@
 def pyScript():
-    return print("ESTO ANDA DE 10")
+    mensage = "ESTO ANDA DE 10"
+    return mensage
 
 pyScript()
