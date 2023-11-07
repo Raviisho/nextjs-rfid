@@ -8,7 +8,7 @@ export const useClientData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await fetch("http://190.225.121.163/api/clients");
+        const result = await fetch("http://192.168.1.40/api/clients");
 
         if (!result.ok) {
           throw new Error(`HTTP error! Status: ${result.status}`);
