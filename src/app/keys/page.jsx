@@ -1,14 +1,29 @@
-import React from 'react';
-import dynamic from 'next/dynamic'; // Import dynamic for dynamic imports
-const DynamicKeysComponent = dynamic(() => import('@/app/keys/components/KeysComponent'), {
-  ssr: false, // Set ssr to false for client-side rendering
-});
+import { useState, useEffect } from 'react';
+import { runPythonScript } from './pythonRunner';
 
-export default function KeysPage() {
+const Page = () => {
+  const [pythonOutput, setPythonOutput] = useState('');
+
+  useEffect(() => {
+    // Ejecutar el script de Python cuando se monta el componente
+    runPython();
+  }, []);
+
+  const runPython = async () => {
+    try {
+      const output = await runPythonScript();
+      setPythonOutput(output);
+    } catch (error) {
+      console.error('Error al ejecutar el script de Python:', error);
+    }
+  };
+
   return (
-    <>
-      <div>Keys Works</div>
-      <DynamicKeysComponent />
-    </>
+    <div>
+      <h1>Resultado de Python:</h1>
+      <p>{pythonOutput}</p>
+    </div>
   );
-}
+};
+
+export default Page;
