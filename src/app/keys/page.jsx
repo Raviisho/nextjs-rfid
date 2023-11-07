@@ -1,30 +1,35 @@
-"use client"
-import { useState, useEffect } from 'react';
+import React from 'react';
 import { runPythonScript } from './components/pythonRunner';
 
-const Page = () => {
-  const [pythonOutput, setPythonOutput] = useState('');
+class Page extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pythonOutput: ''
+    };
+  }
 
-  useEffect(() => {
-    // Ejecutar el script de Python cuando se monta el componente
-    runPython();
-  }, []);
+  componentDidMount() {
+    this.runPython();
+  }
 
-  const runPython = async () => {
+  async runPython() {
     try {
       const output = await runPythonScript();
-      setPythonOutput(output);
+      this.setState({ pythonOutput: output });
     } catch (error) {
       console.error('Error al ejecutar el script de Python:', error);
     }
-  };
+  }
 
-  return (
-    <div>
-      <h1>Resultado de Python:</h1>
-      <p>{pythonOutput}</p>
-    </div>
-  );
-};
+  render() {
+    return (
+      <div>
+        <h1>Resultado de Python:</h1>
+        <p>{this.state.pythonOutput}</p>
+      </div>
+    );
+  }
+}
 
 export default Page;
