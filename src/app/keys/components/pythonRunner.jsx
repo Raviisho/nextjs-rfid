@@ -1,5 +1,4 @@
-"use server"
-import { exec } from "child_process"
+import { exec } from 'child_process';
 
 const runPythonScript = () => {
   return new Promise((resolve, reject) => {
@@ -15,4 +14,4 @@ const runPythonScript = () => {
   });
 };
 
-module.exports = { runPythonScript };
+export { runPythonScript };
