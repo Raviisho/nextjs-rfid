@@ -1,3 +1,4 @@
+"use server"
 import { exec } from "child_process"
 
 const runPythonScript = () => {
