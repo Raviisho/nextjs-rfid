@@ -1,5 +1,5 @@
 import React from 'react';
-import { runPythonScript } from './components/pythonRunner';
+import pythonScript  from './components/pythonRunner';
 
 class Page extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Page extends React.Component {
 
   async runPython() {
     try {
-      const output = await runPythonScript();
+      const output = await pythonScript();
       this.setState({ pythonOutput: output });
     } catch (error) {
       console.error('Error al ejecutar el script de Python:', error);
